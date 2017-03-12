@@ -1,41 +1,31 @@
 package triangle;
-
 import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
-
 public class TriangleTest {
-
 	private Triangle tri;
 	@Before
 	public void setUp() throws Exception {
 		tri = new Triangle();
 	}
-
 	@Test
 	public void testIsTriangle() {
-		assertEquals("ÅĞ¶ÏÈı½ÇĞÎÄ£¿éÒì³£",true,tri.isTriangle(3, 3, 5));
+		assertEquals("åˆ¤æ–­ä¸‰è§’å½¢æ¨¡å—å¼‚å¸¸",true,tri.isTriangle(3, 4, 5));
 	}
-
 	@Test
 	public void testIsEquilateral() {
-		assertEquals("ÅĞ¶ÏµÈ±ßÈı½ÇĞÎÄ£¿éÒì³£",true,tri.isEquilateral(3, 3, 3));
+		assertEquals("åˆ¤æ–­ç­‰è¾¹ä¸‰è§’å½¢æ¨¡å—å¼‚å¸¸",true,tri.isEquilateral(3, 3, 3));
 	}
-
 	@Test
 	public void testIsIsosceles() {
-		assertEquals("ÅĞ¶ÏµÈÑüÈı½ÇĞÎÄ£¿éÒì³£",true,tri.isIsosceles(3, 3, 4));
+		assertEquals("åˆ¤æ–­ç­‰è…°ä¸‰è§’å½¢æ¨¡å—å¼‚å¸¸",true,tri.isIsosceles(3, 3, 4));
 	}
-
 	@Test
 	public void testIsRightTriangle() {
-		assertEquals("ÅĞ¶ÏÖ±½ÇÈı½ÇĞÎÄ£¿éÒì³£",true,tri.isRightTriangle(3, 4, 5));
+		assertEquals("åˆ¤æ–­ç›´è§’ä¸‰è§’å½¢æ¨¡å—å¼‚å¸¸",true,tri.isRightTriangle(3, 4, 5));
 	}
-
 	@Test
 	public void testTriangle() {
-		tri.Triangle(3, 3, 5);
+		tri.Triangle(3, 4, 5);
 	}
-
 }
