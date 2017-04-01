@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>导师评价系统</title>
+<meta name="author" content="TJU" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/index/css/style.css">
+<link rel="stylesheet" href="__PUBLIC__/static/index/css/bootstrap.css" />
+<script src="__PUBLIC__/static/index/js/jquery.js"></script>
+<script src="__PUBLIC__/static/index/js/bootstrap.js"></script>
+<script src="__PUBLIC__/static/index/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script>
+
+	(function($){
+		$(window).load(function(){
+			
+			$("a[rel='load-content']").click(function(e){
+				e.preventDefault();
+				var url=$(this).attr("href");
+				$.get(url,function(data){
+					$(".content .mCSB_container").append(data); //load new content inside .mCSB_container
+					//scroll-to appended content 
+					$(".content").mCustomScrollbar("scrollTo","h2:last");
+				});
+			});
+			
+			$(".content").delegate("a[href='top']","click",function(e){
+				e.preventDefault();
+				$(".content").mCustomScrollbar("scrollTo",$(this).attr("href"));
+			});
+			$("#xuexiao").click(function(){
+                   $("#xuexiao1").toggle();
+            });
+            	$("#zhuanye").click(function(){
+                   $("#zhuanye1").toggle();
+            });
+            	$("#daoshi").click(function(){
+                   $("#daoshi1").toggle();
+            });
+		
+        });
+	})(jQuery);
+</script>
+</head>
+<body>
+    
+<!--header-->
+{include file="Public/header" /}
+<!--aside nav-->
+{include file="Public/aside" /}
+
+<section class="rt_wrap content mCustomScrollbar">
+ <div class="rt_content">
+      <div class="page_title">
+       <h2 class="fl">导师详情</h2>
+      </div>
+
+     {volist name="teacher" id="vo"}
+      <table class="teachertable" >
+         <td class="namelabel">{$vo.truename}
+             <p></p>
+             <label class="scoreborder" ><p class="scorename1">研究方向：   <p class="scorename2">{$vo.field}</p>   <!-- 在这里添加标签--></label>
+                   
+         </td>
+        <td >
+            <ul class="scoreborder">       <!-- 在这里添加分数score1,score2,score3-->
+            <li class="scorename">评分一：{$vo.score1_avg}</li>
+            <li class="scorename">评分二：{$vo.score2_avg}</li>
+            <li class="scorename">评分三：{$vo.score3_avg}</li>
+            </ul>
+        </td>
+       <td>
+           
+       <a class="eva_btn" href="{:url('Intro/evaluate',array('id'=>$vo.id))}">点击评价</a>
+           
+       </td>
+      </table>
+     {/volist}
+  
+     
+      <div class="page_title">
+       <h2 class="fl">学生评价记录</h2>
+      </div>
+      <table class="table2" >
+       <tr>
+        <th>用户名</th>
+        <th>时间</th>       
+        <th>评价分数</th>      
+        <th>详细评价</th>
+       </tr>
+          
+       {volist name="comment" id="vo"}
+       <tr>
+        <?php
+        $commenter=\think\Db::table('tju_users')->where('id',$vo['tju_users_id'])->value('nickname');
+    ?>
+        <td>{$commenter}</td>
+        <td><time><?php echo date('Y-m-d',$vo['time'] );  ?></time></td>
+        <td><?php echo ($vo['score1']+$vo['score2']+$vo['score3'])/3 ; ?></td>
+        <td class="left">{$vo.content}</td>
+       </tr>
+       {/volist}
+          
+      </table>
+     {$comment->render()}
+     <br />
+     <br />
+     <br />
+     <br />
+ </div>
+</section>
+
+{include file="Public/footer" /}
+
+<style>
+.dataStatistic{width:400px;height:200px;border:1px solid #ccc;margin:0 auto;margin:10px;overflow:hidden}
+#cylindrical{width:400px;height:200px;margin-top:-15px}
+#line{width:400px;height:200px;margin-top:-15px}
+#pie{width:400px;height:200px;margin-top:-15px}
+</style>
+</body>
+</html>

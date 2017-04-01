@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>导师评价系统</title>
+<meta name="author" content="TJU" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/index/css/style.css">
+<link rel="stylesheet" href="__PUBLIC__/static/index/css/bootstrap.css" />
+<script src="__PUBLIC__/static/index/js/jquery.js"></script>
+<script src="__PUBLIC__/static/index/js/bootstrap.js"></script>
+<script src="__PUBLIC__/static/index/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script>
+
+	(function($){
+		$(window).load(function(){
+			
+			$("a[rel='load-content']").click(function(e){
+				e.preventDefault();
+				var url=$(this).attr("href");
+				$.get(url,function(data){
+					$(".content .mCSB_container").append(data); //load new content inside .mCSB_container
+					//scroll-to appended content 
+					$(".content").mCustomScrollbar("scrollTo","h2:last");
+				});
+			});
+			
+			$(".content").delegate("a[href='top']","click",function(e){
+				e.preventDefault();
+				$(".content").mCustomScrollbar("scrollTo",$(this).attr("href"));
+			});
+			$("#xuexiao").click(function(){
+                   $("#xuexiao1").toggle();
+            });
+            	$("#zhuanye").click(function(){
+                   $("#zhuanye1").toggle();
+            });
+            	$("#daoshi").click(function(){
+                   $("#daoshi1").toggle();
+            });
+		});
+	})(jQuery);
+</script>
+</head>
+<body>
+
+<!--header-->
+{include file="Public/header" /}
+<!--aside nav-->
+{include file="Public/aside" /}
+    
+<section class="rt_wrap content mCustomScrollbar">
+ <div class="rt_content">
+  <div class="class_title">
+       <h2>专业列表</h2>
+    </div>
+      <form action="{:url('Lst/searchmajor')}" target='blank' method="post">
+       <section class="mtb">
+       <input type="text" name="search" class="select" placeholder="请输入专业名称："/>
+       <input type="submit" value="查询" class="group_btn"/>
+      </section>
+     
+     <!--{volist name="majorres" id="kind"}
+      <div class="class_title">
+       <h2>{$kind.kind_major}</h2>
+      </div>  
+     {volist name="majorres" id="vo"}
+     <ul class="classul">
+     
+     {if condition="($vo.kind_major eq $kind.kind_major)"}
+     <li><a href="{:url('Lst/teacherbymajor',array('id'=>$vo.id))}">{$vo.name_major}{/if}</a></li>
+     {/volist}
+     </ul>
+     {/volist}
+-->
+     
+  <div class="class_title">
+       <h2>工学</h2>
+      </div>
+      <ul class="classul">
+    {volist name="majorres" id="vo"}
+    {if condition="($vo['kind_major'] eq '工学')"}
+  <li><a href="{:url('Lst/teacherbymajor',array('id'=>$vo.id))}">{$vo.name_major}</a></li>
+    {/if}
+    {/volist}
+ </ul>
+     
+<div class="class_title">
+       <h2>理学</h2>
+      </div>
+      <ul class="classul">
+    {volist name="majorres" id="vo"}
+    {if condition="($vo['kind_major'] eq '理学')"}
+  <li><a href="{:url('Lst/teacherbymajor',array('id'=>$vo.id))}">{$vo.name_major}</a></li>
+    {/if}
+    {/volist}
+ </ul>
+     
+     <div class="class_title">
+       <h2>历史学</h2>
+      </div>
+      <ul class="classul">
+    {volist name="majorres" id="vo"}
+    {if condition="($vo['kind_major'] eq '历史学')"}
+  <li><a href="{:url('Lst/teacherbymajor',array('id'=>$vo.id))}">{$vo.name_major}</a></li>
+    {/if}
+    {/volist}
+ </ul>
+     
+     <div class="class_title">
+       <h2>文学</h2>
+      </div>
+      <ul class="classul">
+    {volist name="majorres" id="vo"}
+    {if condition="($vo['kind_major'] eq '文学')"}
+  <li><a href="{:url('Lst/teacherbymajor',array('id'=>$vo.id))}">{$vo.name_major}</a></li>
+    {/if}
+    {/volist}
+ </ul>
+     
+     <div class="class_title">
+       <h2>教育学</h2>
+      </div>
+      <ul class="classul">
+    {volist name="majorres" id="vo"}
+    {if condition="($vo['kind_major'] eq '教育学')"}
+  <li><a href="{:url('Lst/teacherbymajor',array('id'=>$vo.id))}">{$vo.name_major}</a></li>
+    {/if}
+    {/volist}
+ </ul>
+     
+     <div class="class_title">
+       <h2>法学</h2>
+      </div>
+      <ul class="classul">
+    {volist name="majorres" id="vo"}
+    {if condition="($vo['kind_major'] eq '法学')"}
+  <li><a href="{:url('Lst/teacherbymajor',array('id'=>$vo.id))}">{$vo.name_major}</a></li>
+    {/if}
+    {/volist}
+ </ul>
+     
+     <div class="class_title">
+       <h2>经济学</h2>
+      </div>
+      <ul class="classul">
+    {volist name="majorres" id="vo"}
+    {if condition="($vo['kind_major'] eq '经济学')"}
+  <li><a href="{:url('Lst/teacherbymajor',array('id'=>$vo.id))}">{$vo.name_major}</a></li>
+    {/if}
+    {/volist}
+ </ul>
+     
+     <div class="class_title">
+       <h2>哲学</h2>
+      </div>
+      <ul class="classul">
+    {volist name="majorres" id="vo"}
+    {if condition="($vo['kind_major'] eq '哲学')"}
+  <li><a href="{:url('Lst/teacherbymajor',array('id'=>$vo.id))}">{$vo.name_major}</a></li>
+    {/if}
+    {/volist}
+ </ul>
+     
+     <div class="class_title">
+       <h2>农学</h2>
+      </div>
+      <ul class="classul">
+    {volist name="majorres" id="vo"}
+    {if condition="($vo['kind_major'] eq '农学')"}
+  <li><a href="{:url('Lst/teacherbymajor',array('id'=>$vo.id))}">{$vo.name_major}</a></li>
+    {/if}
+    {/volist}
+ </ul>
+     
+     <div class="class_title">
+       <h2>医学</h2>
+      </div>
+      <ul class="classul">
+    {volist name="majorres" id="vo"}
+    {if condition="($vo['kind_major'] eq '医学')"}
+  <li><a href="{:url('Lst/teacherbymajor',array('id'=>$vo.id))}">{$vo.name_major}</a></li>
+    {/if}
+    {/volist}
+ </ul>
+     
+     <div class="class_title">
+       <h2>军事学</h2>
+      </div>
+      <ul class="classul">
+    {volist name="majorres" id="vo"}
+    {if condition="($vo['kind_major'] eq '军事学')"}
+  <li><a href="{:url('Lst/teacherbymajor',array('id'=>$vo.id))}">{$vo.name_major}</a></li>
+    {/if}
+    {/volist}
+ </ul>
+     
+     <div class="class_title">
+       <h2>管理学</h2>
+      </div>
+      <ul class="classul">
+    {volist name="majorres" id="vo"}
+    {if condition="($vo['kind_major'] eq '管理学')"}
+  <li><a href="{:url('Lst/teacherbymajor',array('id'=>$vo.id))}">{$vo.name_major}</a></li>
+    {/if}
+    {/volist}
+ </ul>
+     
+     <div class="class_title">
+       <h2>艺术学</h2>
+      </div>
+      <ul class="classul">
+    {volist name="majorres" id="vo"}
+    {if condition="($vo['kind_major'] eq '艺术学')"}
+  <li><a href="{:url('Lst/teacherbymajor',array('id'=>$vo.id))}">{$vo.name_major}</a></li>
+    {/if}
+    {/volist}
+ </ul>
+     <br />
+     <br />
+     <br />
+     <br />
+
+ </div>
+</section>
+
+{include file="Public/footer" /}
+    
+<style>
+.dataStatistic{width:400px;height:200px;border:1px solid #ccc;margin:0 auto;margin:10px;overflow:hidden}
+#cylindrical{width:400px;height:200px;margin-top:-15px}
+#line{width:400px;height:200px;margin-top:-15px}
+#pie{width:400px;height:200px;margin-top:-15px}
+</style>
+</body>
+</html>
+

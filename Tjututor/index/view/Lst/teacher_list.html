@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>导师评价系统</title>
+<meta name="author" content="TJU" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/index/css/style.css">
+<link rel="stylesheet" href="__PUBLIC__/static/index/css/bootstrap.css" />
+<script src="__PUBLIC__/static/index/js/jquery.js"></script>
+<script src="__PUBLIC__/static/index/js/bootstrap.js"></script>
+<script src="__PUBLIC__/static/index/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script>
+
+	(function($){
+		$(window).load(function(){
+			
+			$("a[rel='load-content']").click(function(e){
+				e.preventDefault();
+				var url=$(this).attr("href");
+				$.get(url,function(data){
+					$(".content .mCSB_container").append(data); //load new content inside .mCSB_container
+					//scroll-to appended content 
+					$(".content").mCustomScrollbar("scrollTo","h2:last");
+				});
+			});
+			
+			$(".content").delegate("a[href='top']","click",function(e){
+				e.preventDefault();
+				$(".content").mCustomScrollbar("scrollTo",$(this).attr("href"));
+			});
+			$("#xuexiao").click(function(){
+                   $("#xuexiao1").toggle();
+            });
+            	$("#zhuanye").click(function(){
+                   $("#zhuanye1").toggle();
+            });
+            	$("#daoshi").click(function(){
+                   $("#daoshi1").toggle();
+            });
+		});
+	})(jQuery);
+</script>
+</head>
+<body>
+<!--header-->
+{include file="Public/header" /}
+<!--aside nav-->
+{include file="Public/aside" /}
+
+<section class="rt_wrap content mCustomScrollbar">
+ <div class="rt_content">
+  <div class="class_title">
+       <h2>导师列表</h2>
+      </div>
+     
+       <form action="{:url('Lst/searchteacher')}" target='blank' method="post">
+       <section class="mtb">
+       <input type="text" name="search" class="select" placeholder="请输入导师名称："/>
+       <input type="submit" value="查询" class="group_btn"/>
+      </section>
+     
+      <table class="table">
+       <tr>
+        <th>导师名称</th>
+        <th>照片</th>
+        <th>学校</th>
+        <th>研究方向</th>
+        <th>联系方式</th>
+        <th>个人主页</th>
+        <th>评价详细</th>
+       </tr>
+          
+       {volist name="teacherres" id="vo"}
+       <tr>
+        <td class="center"><a href="{:url('Intro/teacher',array('id'=>$vo.id))}">{$vo.truename}</a></td>
+        <td class="center">{$vo.face}</td>
+        <td class="center">{$vo.college}</td>
+        <td class="center">{$vo.field}</td>
+        <td class="center">{$vo.email}</td>
+        <td class="center">{$vo.web}</td>
+        <td class="center">
+         <a href="{:url('Intro/teacher',array('id'=>$vo.id))}" title="评价详细" class="link_icon">&#118;</a>
+        </td>
+       </tr>
+       {/volist}
+          
+      </table>
+    {$teacherres->render()}
+     <br />
+     <br />
+     <br />
+     <br />
+ </div>
+</section>
+
+{include file="Public/footer" /}
+    
+<style>
+.dataStatistic{width:400px;height:200px;border:1px solid #ccc;margin:0 auto;margin:10px;overflow:hidden}
+#cylindrical{width:400px;height:200px;margin-top:-15px}
+#line{width:400px;height:200px;margin-top:-15px}
+#pie{width:400px;height:200px;margin-top:-15px}
+</style>
+</body>
+</html>
