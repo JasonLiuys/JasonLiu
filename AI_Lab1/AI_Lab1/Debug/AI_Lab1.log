@@ -1,0 +1,5 @@
+﻿  main.cpp
+d:\天津大学\大三春—天津大学\人工智能\ai_lab1\ai_lab1\main.cpp(315): warning C4566: 由通用字符名称“\u2195”表示的字符不能在当前代码页(936)中表示出来
+d:\天津大学\大三春—天津大学\人工智能\ai_lab1\ai_lab1\main.cpp(325): warning C4566: 由通用字符名称“\u2194”表示的字符不能在当前代码页(936)中表示出来
+  AI_Lab1.vcxproj -> D:\天津大学\大三春—天津大学\人工智能\AI_Lab1\Debug\AI_Lab1.exe
+  AI_Lab1.vcxproj -> D:\天津大学\大三春—天津大学\人工智能\AI_Lab1\Debug\AI_Lab1.pdb (Full PDB)
