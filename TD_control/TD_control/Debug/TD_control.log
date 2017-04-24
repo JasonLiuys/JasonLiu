@@ -1,0 +1,16 @@
+﻿  main.cpp
+d:\天津大学\大三春—天津大学\人工智能\td_control\td_control\main.cpp(353): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+d:\天津大学\大三春—天津大学\人工智能\td_control\td_control\main.cpp(388): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+d:\天津大学\大三春—天津大学\人工智能\td_control\td_control\main.cpp(389): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+d:\天津大学\大三春—天津大学\人工智能\td_control\td_control\main.cpp(419): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+d:\天津大学\大三春—天津大学\人工智能\td_control\td_control\main.cpp(420): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+d:\天津大学\大三春—天津大学\人工智能\td_control\td_control\main.cpp(421): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+d:\天津大学\大三春—天津大学\人工智能\td_control\td_control\main.cpp(422): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+d:\天津大学\大三春—天津大学\人工智能\td_control\td_control\main.cpp(513): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+d:\天津大学\大三春—天津大学\人工智能\td_control\td_control\main.cpp(514): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+d:\天津大学\大三春—天津大学\人工智能\td_control\td_control\main.cpp(515): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+d:\天津大学\大三春—天津大学\人工智能\td_control\td_control\main.cpp(516): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+d:\天津大学\大三春—天津大学\人工智能\td_control\td_control\main.cpp(689): warning C4566: 由通用字符名称“\u2195”表示的字符不能在当前代码页(936)中表示出来
+d:\天津大学\大三春—天津大学\人工智能\td_control\td_control\main.cpp(699): warning C4566: 由通用字符名称“\u2194”表示的字符不能在当前代码页(936)中表示出来
+  TD_control.vcxproj -> D:\天津大学\大三春—天津大学\人工智能\TD_control\Debug\TD_control.exe
+  TD_control.vcxproj -> D:\天津大学\大三春—天津大学\人工智能\TD_control\Debug\TD_control.pdb (Full PDB)
