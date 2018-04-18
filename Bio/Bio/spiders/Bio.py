@@ -35,7 +35,7 @@ class BioSpider(scrapy.Spider):
         
    
     def parse_item(self , response):
-        print ("---------")
+        #print ("---------")
         title = response.xpath("//div[@id='summary']/h1/text()").extract()  
         href = response.xpath("//div[@id='summary']/dl/dd[3]/a/@href").extract()
         for i in href:
@@ -44,7 +44,7 @@ class BioSpider(scrapy.Spider):
         
         
     def parse_bio(self , response):
-        print ("++++++++++")
+        #print ("++++++++++")
         try:
             bioUrl = response.url.split("/")[-2]
             #print (bioUrl) 
@@ -56,7 +56,7 @@ class BioSpider(scrapy.Spider):
             bioSample = []
             
             title = response.meta["title"]
-            print(title)
+            #print(title)
             bioSample = bioUrl
             sampleName = response.xpath("//table[@class='docsum']//th[contains(text(),'sample name')]/following-sibling::*[1]/text()").extract()
             strain = response.xpath("//table[@class='docsum']//th[contains(text(),'strain')]/following-sibling::*[1]/text()").extract()
@@ -76,7 +76,7 @@ class BioSpider(scrapy.Spider):
             if len(isoSource) == 0:
                 isoSource = "*"
             
-            print ("-------wait-------")
+            print (self.num)
             items = BioItem()  
             items['title'] = title
             items['bioSample'] = bioSample
@@ -85,7 +85,7 @@ class BioSpider(scrapy.Spider):
             items['geoLocation'] = geoLocation
             items['isoSource'] = isoSource
             self.num = self.num + 1
-            print (self.num)
+            #print (self.num)
             yield items
             
             #position = self.bioSamples.index(bioUrl)
